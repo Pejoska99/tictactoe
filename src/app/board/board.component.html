@@ -1,0 +1,30 @@
+<div *ngIf="(winner$ | async) as winner">
+  <h2>Winner: {{ winner }}</h2>
+</div>
+<div *ngIf="(currentPlayer$ | async) as currentPlayer">
+  <h2>Current Player: {{ currentPlayer }}</h2>
+</div>
+<div class="board">
+  <div *ngFor="let cell of (board$ | async); let i = index" 
+       (click)="makeMove(i)" 
+       class="cell">
+    {{ cell }}
+  </div>
+</div>
+<button (click)="resetGame()">Reset Game</button>
+
+<div>
+  <label>
+    <input type="checkbox" (change)="onBotEnabledChange($event)" />
+    Enable Bot
+  </label>
+  <select (change)="onDifficultyChange($event)">
+    <option value="easy">Easy</option>
+    <option value="medium">Medium</option>
+  </select>
+</div> 
+
+
+
+
+
